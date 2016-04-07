@@ -1,2 +1,5 @@
-takeown /F C:\Windows\WinSxS\wow64_adobe-flash-for-windows_31bf3856ad364e35_6.2.9200.20654_none_8f68461840b9d200 /R
-icacls C:\Windows\WinSxS\wow64_adobe-flash-for-windows_31bf3856ad364e35_6.2.9200.20654_none_8f68461840b9d200 /grant Everyone:F
+set FolderPrefix=C:\Windows\WinSxS
+
+for /f %%a in ('dir /b %FolderPrefix%\wow64_adobe-flash-for-windows*') do takeown /F %FolderPrefix%\%%a /R
+for /f %%a in ('dir /b %FolderPrefix%\wow64_adobe-flash-for-windows*') do icacls %FolderPrefix%\%%a /grant Everyone:F
+for /f %%a in ('dir /b %FolderPrefix%\wow64_adobe-flash-for-windows*') do rd /s /q %FolderPrefix%\%%a
